@@ -1,0 +1,212 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background-image: url("https://i.ibb.co/WGry01m/cd.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#weather{
+   width: 70%; 
+   margin: 50px  auto;
+   border-radius: 10px;
+   border: 1px solid black;
+   display: flex;
+}
+ #section1 img{
+   height: 200px;
+   width: 200px;
+   margin: 20px 50px;
+} 
+#section1{
+    width: 30%;
+    background-color: rgb(225,225,225,0.85);
+}
+#section2{
+    flex-grow: 2;
+    padding: 20px 40px;
+    background-color:whitesmoke;
+    /* border-radius: 10px; */  
+}
+#search{
+   display: flex;
+   padding: 20px;
+   margin: 20px 20px;
+}
+input{
+    padding: 10px;
+    font-size: large;
+    
+}
+button{
+    padding: 5px 15px;
+    background-color: deepskyblue;
+    color: white;
+    border-style: none;
+    font-weight: bold;
+}
+div section p{
+    padding-left: 5px;
+}
+.temparature{
+    display:flex;
+    padding-left: 30px;
+}.temparature #temp{
+    font-size:70px ;
+    font-weight: 100;
+    line-height: 1;
+
+}.temparature span{
+    font-size: 40px;
+    margin-top: -10px;
+    display: block;
+}.data_time{
+    padding-left:30px ;
+}
+.divider{
+   width: 100%;
+   height: 1px;
+   margin: 20px 0px;
+   background-color: #eee;
+}.condition_rain{
+    font-size: 17px;
+    text-transform: capitalize;
+    padding-left: 30px;
+}.condition_rain div{
+    display:flex;
+    align-items: center;
+    gap:10px;
+    margin-bottom: 10px;
+
+}.condition_rain div li{
+    width:20px;
+ }
+.location{
+     display: flex;
+    align-items: center;
+    font-size: 20px;
+    gap:10px;
+    padding-left: 30px;
+    /* margin-top: 500px; */
+} 
+
+#navbar{
+    display: flex;
+    justify-content: space-between;
+}
+ul li{
+    list-style: none;
+    font-size: x-large;
+    cursor: pointer;
+}
+ul li a{
+    color:black;
+    text-decoration: none;
+}
+ul li a:hover{
+    color:deepskyblue
+}
+#days ul{
+    display: flex;
+    gap: 20px; 
+}
+#days ul li:hover{
+    color:deepskyblue;
+}
+#temperature-unit ul{
+    display: flex;
+    gap: 30px;
+}
+#temperature-unit ul li{
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 50%;
+    background-color: white;
+}
+#temperature-unit ul li:hover{
+    background-color: black;
+    color: white;
+}
+.week{
+    /* height: 150px; */
+    width: 100px;
+    
+    border-radius: 10px;
+    background-color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: small;
+}
+.week img{
+    height: 50px;
+    width: 50px;
+}
+.temp{
+    display: flex;
+    justify-content: center;
+}
+.temp p{
+    font-weight: bold;
+    font-size: large;
+}
+.today{
+    /* height: 100px; */
+    width: 80px;
+    
+    border-radius: 10px;
+    background-color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: small;
+}
+.today img{
+    height: 50px;
+    width: 50px;
+}
+.today-report{
+    margin: 50px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.weeks-report{
+    margin: 50px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.highlight{
+    width: 250px;
+    /* height: 130px; */
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+.highlight p{
+    color: rgb(179, 174, 174);
+    font-weight: bold;
+}
+.highlight h1{
+    margin-top: 20px;
+    text-align: center;
+    font-size: xx-large;
+}
+.highlight span{
+    margin-top: 20px;
+    text-align: left;
+}
+.highlights{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 40px 0px;
+}
+.footer{
+    text-align: center;
+}
+
