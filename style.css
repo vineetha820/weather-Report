@@ -10,7 +10,7 @@ body{
     background-size: cover;
 }
 #weather{
-   width: 70%; 
+   width: 90%; 
    margin: 50px  auto;
    border-radius: 10px;
    border: 1px solid black;
@@ -24,9 +24,10 @@ body{
 #section1{
     width: 30%;
     background-color: rgb(225,225,225,0.85);
+    position: relative;
 }
 #section2{
-    flex-grow: 2;
+
     padding: 20px 40px;
     background-color:whitesmoke;
     /* border-radius: 10px; */  
@@ -90,7 +91,10 @@ div section p{
     font-size: 20px;
     gap:10px;
     padding-left: 30px;
-    /* margin-top: 500px; */
+    position: absolute;
+    bottom: 30px;
+    
+    
 } 
 
 #navbar{
@@ -129,12 +133,12 @@ ul li a:hover{
     background-color: white;
 }
 #temperature-unit ul li:hover{
-    background-color: black;
+    background-color:black;
     color: white;
-}
+} 
 .week{
-    /* height: 150px; */
-    width: 100px;
+     
+    width: 150px;
     
     border-radius: 10px;
     background-color: white;
@@ -143,20 +147,27 @@ ul li a:hover{
     font-size: small;
 }
 .week img{
-    height: 50px;
-    width: 50px;
+    margin-top: 10px;
+    height: 70px;
+    width: 70px;
 }
 .temp{
-    display: flex;
+    margin-top: 10px;
+     display: flex; 
     justify-content: center;
 }
 .temp p{
+    
     font-weight: bold;
+    font-size: x-large;
+}
+.temp span{
+    display: block;
     font-size: large;
 }
 .today{
-    /* height: 100px; */
-    width: 80px;
+    
+    width: 150px;
     
     border-radius: 10px;
     background-color: white;
@@ -165,23 +176,26 @@ ul li a:hover{
     font-size: small;
 }
 .today img{
-    height: 50px;
-    width: 50px;
+    margin-top: 10px;
+    height: 70px;
+    width: 70px;
 }
 .today-report{
     margin: 50px 0px;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
+    
 }
 .weeks-report{
     margin: 50px 0px;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
+    
 }
 .highlight{
-    width: 250px;
+    width: 350px;
     /* height: 130px; */
     background-color: white;
     border-radius: 10px;
@@ -197,7 +211,8 @@ ul li a:hover{
     font-size: xx-large;
 }
 .highlight span{
-    margin-top: 20px;
+    display: block;
+    margin-top: 30px;
     text-align: left;
 }
 .highlights{
@@ -205,8 +220,141 @@ ul li a:hover{
     flex-wrap: wrap;
     gap: 30px;
     margin: 40px 0px;
+    justify-content: space-around;
 }
 .footer{
     text-align: center;
 }
 
+@media screen and  (min-device-width: 425px) and (max-device-width:767px) {
+
+    #section1 img{
+        height: 100px;
+        width: 100px;
+        margin: 15px 20px;
+     } 
+    #search{
+   padding: 10px;
+   margin: 5px;
+}
+input{
+    padding: 5px ;
+    font-size:small;
+    width: 100%;
+}
+button{
+    padding: 5px 5px;
+    background-color: deepskyblue;
+    color: white;
+    border-style: none;
+    font-weight: bold;
+}
+.highlight{
+    width: 130px;
+    
+}
+.week{
+    width: 110px;
+}
+.today{
+    
+    width: 110px;
+    
+    
+}
+.data_time{
+    padding-left:10px ;
+}
+#days ul{
+   margin-left:0px;
+    gap: 10px; 
+}
+
+#temperature-unit ul{
+    margin-right: 10px;
+    gap: 10px;
+}
+#temperature-unit ul li{
+    height: 30px;
+    width: 30px;
+    
+}
+#section2{
+
+    padding: 20px 20px;
+    
+}
+.today img{
+    margin-top: 5px;
+   
+}
+.today-report{
+    
+    gap: 20px;
+}
+.weeks-report{
+    
+    gap: 20px;
+}
+.location{
+   
+   font-size: 15px;
+  
+   padding-left: 10px;
+   
+   
+} 
+.condition_rain{
+    font-size: 15px;
+    
+    padding-left: 10px;
+}
+.temparature{
+    
+    padding-left: 10px;
+}.temparature #temp{
+    font-size:40px ;
+    
+
+}
+.temparature span{
+    font-size: 20px;
+   
+}
+#today_hilight{
+    font-size: large;
+}
+    
+  }
+  
+  @media  screen and (min-device-width: 768px) and (max-device-width:1440px) {
+
+    #section1 img{
+        height: 150px;
+        width: 150px;
+        margin: 20px 25px;
+     } 
+    #search{
+   padding: 10px;
+   margin: 15px 15px;
+}
+input{
+    padding: 10px;
+    font-size:small;
+    width: 100%;
+    
+}
+.highlight{
+    width: 200px;
+    
+}
+.week{
+    width: 130px;
+}
+.today{
+    
+    width: 130px;
+}
+    
+  }
+  
