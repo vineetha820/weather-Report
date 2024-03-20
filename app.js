@@ -1,5 +1,5 @@
 let date = document.getElementById("date_time");
-let currentTab = "week";
+
 
 
 function toggleTab(tabName, currentCity = null) {
