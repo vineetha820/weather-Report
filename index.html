@@ -49,14 +49,14 @@
             <nav id="navbar">
                 <div id="days">
                     <ul>
-                        <li id="todayTab" onclick="toggleTab('today')">Today</li>
-                        <li value="week" id="weekTab" onclick="toggleTab('week')">Week</li>
+                        <li id="todayTab" onclick="toggleTab('today',currentCity)">Today</li>
+                        <li value="week" id="weekTab" onclick="toggleTab('week',currentCity)" class="week-active">Week</li>
                     </ul>
                 </div>
                 <div id="temperature-unit">
                     <ul>
-                        <li id="celsius" class="active">°C</li>
-                        <li id="fahrenhiet">°F</li>
+                        <li id="celsius"  class="active" >°C</li>
+                        <li id="fahrenhiet" >°F</li>
                     </ul>
                 </div>
             </nav>

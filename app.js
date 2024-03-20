@@ -1,6 +1,6 @@
 let date = document.getElementById("date_time");
 let currentTab = "week";
-//function to get the data and time
+
 
 function toggleTab(tabName, currentCity = null) {
     currentTab = tabName
@@ -19,10 +19,11 @@ function toggleTab(tabName, currentCity = null) {
         location = currentCity
     }
     getWeatherData(location, tabName === "week")
+    
 }
 
 
-//function to get data andtime
+// function to get date and time
 function getDate() {
     let now = new Date(),
         hour = now.getHours(),
@@ -46,13 +47,18 @@ setInterval(() => {
     date.innerText = getDate();
 }, 1000);
 
+
 let location1 = document.querySelector(".location-name")
 let condition=document.getElementById("condition")
 let rain=document.getElementById("rain")
 let searchForm = document.getElementById("search")
 let mainIcon=document.getElementById("today_cloud")
 let today_temperature=document.getElementById("temp")
+let today_active=document.getElementById("todayTab")
+let week_active=document.getElementById("weekTab")
 let currentCity = ""
+
+
 //function to get the cuurent city
 function getPublicIp() {
     fetch("https://geolocation-db.com/json/", {
@@ -63,23 +69,23 @@ function getPublicIp() {
         .then((data) => {
             console.log(data)
             currentCity = data.city;
-          
+            
             toggleTab("week", currentCity)
-            getWeatherData(currentCity, currentTab === "week");
-             
+             getWeatherData(data.city, currentTab === "week");
         })
         .catch((err) => {
             console.error(err);
         });
 }
- getPublicIp()
+getPublicIp()
 
 
 
 // function to get weather data
 function getWeatherData(city, week = false) {
     fetch(
-        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=EJ6UBL2JEQGYB3AA4ENASN62J&contentType=json`,
+            `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}%7Bcity%7D?unitGroup=metric&key=FTCHXFVF4YFLNERJWDXWHHQMJ&contentType=json`,
+ 
         {
             method: "GET",
             headers: {},
@@ -94,19 +100,21 @@ function getWeatherData(city, week = false) {
 
             location1.innerText = data.resolvedAddress
             condition.innerText = today.conditions;
-today_temperature.innerText=today.temp
-
+            today_temperature.innerText=today.temp
             rain.innerText = "Perc - " + today.precip + "%";
-            //calling the weather data functions
+            
             getUVIndex(today)
             getWindStatus(today)
             getSunsetSunrise(today)
             getHumidity(today)
             getVisibility(today)
-             updateAirQualityStatus(today);
+            
+            updateAirQualityStatus(today);
             mainIcon.src = getIcon(today.icon);
-      changeBackground(today.icon);
+            changeBackground(today.icon);
+
             if (week) {
+                
                 weekTemperature(data.days);
             } else {
                 getHoursTemperature(data.days[0].hours)
@@ -120,6 +128,7 @@ today_temperature.innerText=today.temp
  }
 
 
+
 searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
     let search = document.getElementById("place")
@@ -129,7 +138,7 @@ searchForm.addEventListener("submit", (e) => {
         getWeatherData(location, currentTab === "week");
     }
 });
-//function to change the today icon
+// function to change slide today icon
 function getIcon(condition) {
     if (condition === "partly-cloudy-day") {
       return "https://i.ibb.co/PZQXH8V/27.png";
@@ -145,8 +154,10 @@ function getIcon(condition) {
       return "https://i.ibb.co/rb4rrJL/26.png";
     }
   }
-  //function to change background image
+
+//   function to change background image
   function changeBackground(condition) {
+   
     const body = document.querySelector("body");
     let bg = "";
     if (condition === "partly-cloudy-day") {
@@ -165,8 +176,9 @@ function getIcon(condition) {
     body.style.backgroundImage = `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url(${bg})`;
   }
 
-//function to get week temperature and iomages
+// function to change week temperature 
 function weekTemperature(week) {
+  
     
     let day = week.map((temp) => {
          return temp.temp
@@ -180,12 +192,12 @@ function weekTemperature(week) {
     }
     var celsiusElements = document.getElementsByClassName("fahrenCelsius");
 
-// Loop through each celsius element
+// to change Loop through each celsius element
 for (var i = 0; i < celsiusElements.length; i++) {
     // Set the inner text of each celsius element to "°C"
     celsiusElements[i].innerText = "°C";
 }
-
+// function to change week images
     let icon = week.map((icon => {
         let name = icon.icon
         if (name == "partly-cloudy-day") {
@@ -215,7 +227,7 @@ for (var i = 0; i < celsiusElements.length; i++) {
     }
     
 }
-//function to get uvindex
+// function to get uv index
 function getUVIndex(today) {
     let uvindex = document.getElementById("uvIndex")
     let specification = document.querySelector(".uvIndex")
@@ -231,19 +243,19 @@ function getUVIndex(today) {
         specification.innerText = "high"
     }
 }
-//function to get windStatus
+// function to get wind status
 function getWindStatus(today) {
     let windStatus = document.getElementById("windStatus")
     windStatus.innerText = today.windspeed
 }
-//function to get sunset & Sunrise
+// function to get sunsetsunrise
 function getSunsetSunrise(today) {
     let suunset = document.getElementById("sunset")
     let sunrise = document.getElementById("sunrise")
     sunrise.innerText = today.sunrise
     suunset.innerText = today.sunset
 }
-//function to get humidity
+// function to get humidity
 function getHumidity(today) {
     let humidity = document.getElementById("humidity")
     let specification = document.querySelector(".humidity")
@@ -256,8 +268,7 @@ function getHumidity(today) {
         specification.innerText = "high"
     }
 }
-
-//function to get visisbility
+// function to get visibility
 function getVisibility(today) {
     let visibility = document.getElementById("visibility")
     let specification = document.querySelector(".visibility")
@@ -287,9 +298,29 @@ function getVisibility(today) {
         specification.innerText = "very Clear Air"
     }
 }
-
-//function to get hours temperature and images
+// function to get airquality
+function updateAirQualityStatus(today) {
+    let airQuality=document.getElementById("airQality")
+    let airQualityStatus=document.getElementById("airQualityStatus")
+    let airquality=today.winddir
+    airQuality.innerText = airquality;
+    if (airquality <=50) {
+      airQualityStatus.innerText = "Good👌";
+    } else if ( airquality>50 && airquality <= 100) {
+      airQualityStatus.innerText = "Moderate😐";
+    } else if ( airquality>100 && airquality <= 150) {
+      airQualityStatus.innerText = "Unhealthy for Sensitive Groups😷";
+    } else if ( airquality>150 && airquality <= 200) {
+      airQualityStatus.innerText = "Unhealthy😷";
+    } else if ( airquality>200 && airquality <= 250) {
+      airQualityStatus.innerText = "Very Unhealthy😨";
+    } else {
+      airQualityStatus.innerText = "Hazardous😱";
+    }
+  }
+//   function to change week temeprature
 function getHoursTemperature(data) {
+   
     let temp = data.map((temp) => {
         return temp.temp
     })
@@ -343,35 +374,15 @@ for (var i = 1; i <= 24; i++) {
         
     
 }
-//function to get airQualityStatus
-function updateAirQualityStatus(today) {
-    let airQuality=document.getElementById("airQality")
-    let airQualityStatus=document.getElementById("airQualityStatus")
-    // console.log(data)
-    airQuality.innerText = today.winddir;
-    if (airQuality <= 50) {
-      airQualityStatus.innerText = "Good👌";
-    } else if (airQuality <= 100) {
-      airQualityStatus.innerText = "Moderate😐";
-    } else if (airQuality <= 150) {
-      airQualityStatus.innerText = "Unhealthy for Sensitive Groups😷";
-    } else if (airQuality <= 200) {
-      airQualityStatus.innerText = "Unhealthy😷";
-    } else if (airQuality <= 250) {
-      airQualityStatus.innerText = "Very Unhealthy😨";
-    } else {
-      airQualityStatus.innerText = "Hazardous😱";
-    }
-  }
-  //function to change  celsius to foregnheit
-function celsiusToFahrenheit(celsius) {
+
+//  function to change celsiusToFahrenheit formula  
+    function celsiusToFahrenheit(celsius) {
         var fahrenheit = (celsius * 9/5) + 32;
         return fahrenheit;
     }
     
     
-    
-  //function to swap celsius and fahrenheit
+  
   function changeTemperature(week,data,today){
     let celsius=document.getElementById("celsius")
     let fahrenheit=document.getElementById("fahrenhiet")
@@ -406,18 +417,18 @@ function celsiusToFahrenheit(celsius) {
        }
    }
    today_temperature.innerText=today
-   celsius.classList.add("active")
-   fahrenheit.classList.remove("active")
+   celsius.classList.add('active')
+   fahrenheit.classList.remove('active')
 })
 
 
     fahrenheit.addEventListener("click",()=>{
-        fahrenheit.classList.add("active")
-        celsius.classList.remove("active")
+         fahrenheit.classList.add('active')
+         celsius.classList.remove('active')
         let day = week.map((temp) => {
             return temp.temp
         })
-        console.log(day)
+       
 
         for (var i = 1; i <= 7; i++) {
            var hourElement = document.querySelector("#days" + i + " p");
@@ -441,6 +452,10 @@ function celsiusToFahrenheit(celsius) {
        // Set the inner text of each celsius element to "°C"
        celsiusElements[i].innerText = "°F";
    }
-   today_temperature.innerText= celsiusToFahrenheit(today).toFixed();
-    })
-  }
+   today_temperature.innerText= celsiusToFahrenheit(today).toFixed();})
+}
+
+
+
+
+

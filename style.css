@@ -130,12 +130,7 @@ ul li a:hover{
     text-align: center;
     border: 1px solid white;
     border-radius: 50%;
-    background-color: white;
 }
-#temperature-unit ul li:hover{
-    background-color:black;
-    color: white;
-} 
 .week{
      
     width: 150px;
@@ -165,6 +160,7 @@ ul li a:hover{
     display: block;
     font-size: large;
 }
+
 .today{
     
     width: 150px;
@@ -225,6 +221,11 @@ ul li a:hover{
 .footer{
     text-align: center;
 }
+.active{
+ 
+   color:white;
+   background-color: black;
+}
 
 @media screen and  (min-device-width: 425px) and (max-device-width:767px) {
 
@@ -250,7 +251,7 @@ button{
     font-weight: bold;
 }
 .highlight{
-    width: 130px;
+    width: 150px;
     
 }
 .week{
@@ -323,6 +324,10 @@ button{
 }
 #today_hilight{
     font-size: large;
+}
+.data_time{
+    padding-left:10px ;
+    font-size: small;
 }
     
   }
